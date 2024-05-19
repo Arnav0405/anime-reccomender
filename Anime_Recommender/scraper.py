@@ -1,8 +1,4 @@
 import requests
-#from selenium import webdriver
-import time
-#from selenium.webdriver.common.keys import Keys
-#from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import csv
 
@@ -12,12 +8,13 @@ URL = "https://myanimelist.net/topanime.php"
 #second webpage is https://myanimelist.net/topanime.php?limit=50
 r = requests.get(URL)
 soup = BeautifulSoup(r.content, 'html5lib')
+#print(soup.prettify())
+print(soup.find_all('tr'))
+#Get the table that holds the anime
+header = []
 
-                #browser = webdriver.Firefox()
-                #browser.get(URL)
-                #browseOff = False
-#Allow the page to load and the script to run
-time.sleep(5)
+table = soup.find('table', attrs = {'class':'table-header'})
+#print(soup.table.prettify())
 #Make a csv file that holds the data
 #Current idea is to run the script 50 times and
 #get the next anime in the table and
