@@ -25,11 +25,13 @@ lists.append(temp_lst)
 #Now let's get the tr with class in ranking-list
 top_Fifty = soup.find_all('tr', attrs={'class':'ranking-list'})
 for row in top_Fifty:
-    anime = {}
-    for col in row.find('td'):
-        anime[lists[0][0]] = col.text
-    lists.append(temp_lst)
-print(lists)
+    anime = {}     
+    for col in row:
+        print(col)
+        #anime[lists[0][0]] = col.
+        #anime[lists[0][1]] = col.
+    lists.append(anime)
+#print(lists)
 
 
 #Make a csv file that holds the data
