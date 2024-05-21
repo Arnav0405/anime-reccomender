@@ -1,28 +1,42 @@
 import requests
-
 # Here we define our query as a multi-line string
 query = '''
-query ($id: Int, $page: Int, $perPage: Int, $search: String) { # Define which variables will be used in the query (id)
-  Page (page: $page, perPage: $perPage) { # Utilising the Page query type
-  pageInfo {
-            total
-            currentPage
-            lastPage
-            hasNextPage
-            perPage
-        }
-  media (id: $id,  type: MANGA, search: $search) { 
+query($id: Int){
+  Media(id: $id){
     id
     title {
       romaji
       english
-       }
-    startDate {
-      year
-      month
     }
-    status
-    chapters
+    popularity
+    relations {
+      edges {
+        id
+      }
+    }
+    genres
+    averageScore
+    staff(page: 1){
+      edges {
+        node {
+          id
+          name {
+            full
+          }
+          languageV2
+        }
+        role 
+      }
+    }
+    characters(page: 1){
+      edges {
+        node {
+          id 
+          name {
+          full
+          }
+        } 
+      }
     }
   }
 }
@@ -30,9 +44,7 @@ query ($id: Int, $page: Int, $perPage: Int, $search: String) { # Define which va
 
 # Define our query variables and values that will be used in the query request
 variables = {
-    'search': 'Domestic',
-    'page': 1,
-    'perPage': 5
+    'id': 158927
 }
 
 url = 'https://graphql.anilist.co'
