@@ -1,9 +1,17 @@
 import requests
 import pandas as pd
+import time
+
+def to_csv(data):
+    json_data = data
+    df = pd.DataFrame(json_data['data']['Page']['media']) # Convert the json data to a pandas dataframe
+    df.to_csv('anime_data.csv', index=False, mode='a') # Save the dataframe to a csv file
+    return 1
+
 # Here we define our query as a multi-line string
 query = '''
 {
-  Page(page: 1, perPage: 200) {
+  Page(page: 29, perPage: 50) {
     pageInfo {
       total
       lastPage
@@ -42,10 +50,14 @@ variables = {
 }
 
 url = 'https://graphql.anilist.co'
-
+'''response = requests.post(url, json={'query': query, 'variables': variables})  
+data = response.json()
+print(data)'''
 # Make the HTTP Api request
-response = requests.post(url, json={'query': query, 'variables': variables})
-json_data = response.json()
-df = pd.DataFrame(json_data['data']['Page']['media']) # Convert the json data to a pandas dataframe
-df.to_csv('anime_data.csv', index=False) # Save the dataframe to a csv file
-print(df.info()) 
+for i in range(0, 100):
+    print(f'Page {i} done')
+    query = query.replace(f'Page(page: {i}, perPage: 50)', f'Page(page: {i+1}, perPage: 50)')
+    response = requests.post(url, json={'query': query, 'variables': variables})
+    time.sleep(2)
+    data = response.json()
+    to_csv(data)
