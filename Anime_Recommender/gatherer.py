@@ -1,4 +1,5 @@
 import requests
+import pandas as pd
 # Here we define our query as a multi-line string
 query = '''
 {
@@ -24,7 +25,7 @@ query = '''
       }
       genres
       averageScore
-      Description
+      description
       studios(isMain: true) {
         nodes{
           name
@@ -44,4 +45,7 @@ url = 'https://graphql.anilist.co'
 
 # Make the HTTP Api request
 response = requests.post(url, json={'query': query, 'variables': variables})
-print(response.json())
+json_data = response.json()
+df = pd.DataFrame(json_data['data']['Page']['media']) # Convert the json data to a pandas dataframe
+df.to_csv('anime_data.csv', index=False) # Save the dataframe to a csv file
+print(df.info()) 
