@@ -1,7 +1,7 @@
 Hello, 
 I am Arnav Waghdhare, an closet weeb and machine learning enthusiast. I wanted to create an algorithn that would reccomend me anime, simple!
 
----------PROGRESS----------
+<h1><b>---------PROGRESS----------</b></h1>
 
 Just added a readme!        -22/05/24
 
@@ -9,7 +9,7 @@ I was thinking of using the MyAnimeList top anime list, and scrape from there, b
 Also web scraping on MAL is tiring to me! Would appreciate some help on that, as I can still use the suprise pylib and only work with the rating and/or popularity of shows! </br>
 Update on the AniList dataset! I just need to convert the json file into a csv file, not sure on how but once I do that, converting from csv to Pandas dataframe wouldn't be much hard or viceversa!
 
-<h2>Update on 23rd May</h2>,
+<h2>Update on 23rd May</h2>
 I will be going outstation so won't be able to continue this for the next 3 days. 
 
 <h3> So Far Progress!! </h3>
