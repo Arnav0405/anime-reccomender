@@ -11,13 +11,13 @@ def to_csv(data):
 # Here we define our query as a multi-line string
 query = '''
 {
-  Page(page: 29, perPage: 50) {
+  Page(page: 1, perPage: 50) {
     pageInfo {
       total
       lastPage
       hasNextPage
     }
-    media(type: ANIME, popularity_greater: 10000, sort: POPULARITY_DESC) {
+    media(type: ANIME, popularity_greater: 10000, sort: POPULARITY_DESC, episodes_greater: 8, duration_greater: 20) {
       id
       title {
         romaji
@@ -33,6 +33,7 @@ query = '''
       }
       genres
       averageScore
+      duration
       description
       studios(isMain: true) {
         nodes{
@@ -55,9 +56,9 @@ data = response.json()
 print(data)'''
 # Make the HTTP Api request
 for i in range(0, 100):
-    print(f'Page {i} done')
     query = query.replace(f'Page(page: {i}, perPage: 50)', f'Page(page: {i+1}, perPage: 50)')
     response = requests.post(url, json={'query': query, 'variables': variables})
     time.sleep(2)
     data = response.json()
     to_csv(data)
+    print(f'Page {i + 1} done')
