@@ -5,7 +5,7 @@ import time
 def to_csv(data):
     json_data = data
     df = pd.DataFrame(json_data['data']['Page']['media']) # Convert the json data to a pandas dataframe
-    df.to_csv('anime_data.csv', index=False, mode='a') # Save the dataframe to a csv file
+    df.to_csv('anime_data2.csv', index=False, mode='a') # Save the dataframe to a csv file
     return 1
 
 # Here we define our query as a multi-line string
@@ -17,7 +17,7 @@ query = '''
       lastPage
       hasNextPage
     }
-    media(type: ANIME, popularity_greater: 10000, sort: POPULARITY_DESC, episodes_greater: 8, duration_greater: 20) {
+    media(type: ANIME, popularity_greater: 10000, sort: POPULARITY_DESC) {
       id
       title {
         romaji
@@ -33,6 +33,7 @@ query = '''
       }
       genres
       averageScore
+      episodes
       duration
       description
       studios(isMain: true) {
