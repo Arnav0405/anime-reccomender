@@ -1,5 +1,5 @@
 Hello, 
-I am Arnav Waghdhare, an closet weeb and machine learning enthusiast. I wanted to create an algorithn that would reccomend me anime, simple!
+I am Arnav Waghdhare, an closet weeb and machine learning enthusiast. I wanted to create an algorithm that would reccomend me anime, simple!
 
 <h1><b>---------PROGRESS----------</b></h1>
 
@@ -16,3 +16,6 @@ I will be going outstation so won't be able to continue this for the next 3 days
 
 The database seems to be completely ready for the model. Will have to research on what models should I be using, and what all columns I will be using for the model! </br>
 I don't really have much idea on how to go any further, so the three day break is much needed. Please do send your suggestions on how should I go ahead!!!
+
+<h3> Update 28th May </h3>
+Yea, am fuqed, I haven't done anything related to EDA at the very leaast. let alone choose a model for the ML part. Let's see how far I can continue this project. Although I really want to finish this!
