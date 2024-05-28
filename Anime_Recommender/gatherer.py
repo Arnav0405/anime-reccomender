@@ -17,7 +17,7 @@ query = '''
       lastPage
       hasNextPage
     }
-    media(type: ANIME, popularity_greater: 10000, sort: POPULARITY_DESC) {
+    media(type: ANIME, popularity_greater: 10000, sort: POPULARITY_DESC, status: FINISHED) {
       id
       title {
         romaji
